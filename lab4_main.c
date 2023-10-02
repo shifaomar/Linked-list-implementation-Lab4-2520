@@ -46,7 +46,21 @@ int myFindLongestStringNode(GenericListNode *node, int index, void *userdata)
 	 *   in order to determine what the longest string is in the whole
 	 *   set of nodes.
 	 */
+	
+    
+    struct maxData *maxDataStruct = (struct maxData *)userdata;
 
+    
+    char *nString = (char *)node->data;
+
+    
+    if (strlen(nString) > maxDataStruct->maxLenSoFar) {
+        
+        maxDataStruct->maxLenSoFar = strlen(nString);
+        maxDataStruct->maxStringSoFar = nString;
+    }
+
+	
 	return 1;
 }
 
@@ -79,7 +93,7 @@ doListActivities(GenericListNode *list)
 	return nProcessed;
 }
 
-
+
 
 /**
  **		Tools provided below here you won't need to edit -- they
@@ -128,7 +142,6 @@ main(int argc, char **argv)
 	return 0;
 }
 
-
 
 /**
  * Tools below simply load and clean up the data from main
